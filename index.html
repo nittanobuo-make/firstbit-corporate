@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="株式会社Firstbit — 金融・財務のプロフェッショナルとして、M&A・経費削減・宿泊プロデュース・金融教育を通じ企業の未来を共に創ります。">
+  <title>株式会社Firstbit | 最適解を導き、企業の未来を共に創る</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#0a0f1a',
+              900: '#0f172a',
+              800: '#1e293b',
+              700: '#334155',
+            },
+            slate: {
+              850: '#1a2332',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Noto Sans JP', system-ui, sans-serif; line-height: 1.65; }
+
+    .prose-body { font-size: 0.875rem; font-weight: 300; line-height: 1.65; color: #475569; }
+    @media (min-width: 768px) { .prose-body { font-size: 0.9375rem; } }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    .hero-gradient {
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(59, 130, 246, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(148, 163, 184, 0.08) 0%, transparent 50%),
+        linear-gradient(160deg, #0a0f1a 0%, #0f172a 45%, #1e293b 100%);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .service-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .scroll-indicator {
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    .header-scrolled {
+      background: rgba(10, 15, 26, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5 lg:px-8">
+      <a href="#top" class="group flex flex-col leading-tight">
+        <span class="text-lg font-semibold tracking-[0.12em] text-white transition group-hover:text-slate-200">Firstbit</span>
+        <span class="text-[10px] font-light tracking-widest text-slate-400">株式会社Firstbit</span>
+      </a>
+      <nav class="hidden items-center gap-8 lg:flex" aria-label="メインナビゲーション">
+        <a href="#origin" class="text-xs font-medium tracking-[0.15em] text-slate-300 transition hover:text-white">ABOUT</a>
+        <a href="#philosophy" class="text-xs font-medium tracking-[0.15em] text-slate-300 transition hover:text-white">PHILOSOPHY</a>
+        <a href="#services" class="text-xs font-medium tracking-[0.15em] text-slate-300 transition hover:text-white">SERVICES</a>
+        <a href="#message" class="text-xs font-medium tracking-[0.15em] text-slate-300 transition hover:text-white">MESSAGE</a>
+        <a href="#company" class="text-xs font-medium tracking-[0.15em] text-slate-300 transition hover:text-white">COMPANY</a>
+        <a href="#contact" class="text-xs font-medium tracking-[0.15em] text-slate-300 transition hover:text-white">CONTACT</a>
+      </nav>
+      <button id="menu-toggle" class="flex flex-col gap-1.5 md:hidden" aria-label="メニューを開く" aria-expanded="false">
+        <span class="block h-px w-6 bg-white transition"></span>
+        <span class="block h-px w-6 bg-white transition"></span>
+        <span class="block h-px w-4 bg-white transition"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden border-t border-white/10 bg-navy-950/95 backdrop-blur-md md:hidden">
+      <nav class="flex flex-col px-6 py-4" aria-label="モバイルナビゲーション">
+        <a href="#origin" class="mobile-link border-b border-white/5 py-4 text-sm tracking-[0.15em] text-slate-300">ABOUT</a>
+        <a href="#philosophy" class="mobile-link border-b border-white/5 py-4 text-sm tracking-[0.15em] text-slate-300">PHILOSOPHY</a>
+        <a href="#services" class="mobile-link border-b border-white/5 py-4 text-sm tracking-[0.15em] text-slate-300">SERVICES</a>
+        <a href="#message" class="mobile-link border-b border-white/5 py-4 text-sm tracking-[0.15em] text-slate-300">MESSAGE</a>
+        <a href="#company" class="mobile-link border-b border-white/5 py-4 text-sm tracking-[0.15em] text-slate-300">COMPANY</a>
+        <a href="#contact" class="mobile-link py-4 text-sm tracking-[0.15em] text-slate-300">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero-gradient relative flex min-h-screen items-center overflow-hidden">
+      <div class="hero-grid absolute inset-0 pointer-events-none"></div>
+      <div class="absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl"></div>
+      <div class="absolute -left-24 bottom-1/4 h-80 w-80 rounded-full bg-slate-400/5 blur-3xl"></div>
+
+      <div class="relative mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="fade-in mb-4 text-xs font-medium tracking-[0.35em] text-slate-400 uppercase">Financial &amp; Business Professional</p>
+          <h1 class="fade-in fade-in-delay-1 text-3xl font-light leading-snug tracking-wide text-white sm:text-4xl md:text-5xl">
+            最適解を導き、企業の未来を共に創る。
+          </h1>
+          <p class="fade-in fade-in-delay-2 mt-5 max-w-2xl text-sm font-light leading-relaxed text-slate-400 sm:text-base">
+            金融・財務のプロフェッショナルとして、ビジネスの成長と豊かなライフスタイルをサポートします。
+          </p>
+        </div>
+
+        <a href="#origin" class="fade-in fade-in-delay-3 mt-10 inline-flex flex-col items-center gap-2 text-slate-400 transition hover:text-white group">
+          <span class="text-[11px] font-medium tracking-[0.25em]">SCROLL</span>
+          <span class="scroll-indicator flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition group-hover:border-white/40">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 社名に込めた想い -->
+    <section id="origin" class="bg-white py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="fade-in mb-8 max-w-3xl">
+          <p class="mb-2 text-xs font-medium tracking-[0.3em] text-slate-400">ABOUT</p>
+          <h2 class="text-2xl font-medium tracking-tight text-navy-900 md:text-3xl">社名に込めた想い</h2>
+        </div>
+        <div class="fade-in max-w-4xl prose-body space-y-3">
+          <p>代表は高校時代から情報科に所属し、高校・大学・大学院を通じて「情報」について学び、情報科の教員免許も取得してきました。その経験を通じて、正しい情報を見極め、必要なタイミングで活用することの大切さを強く意識するようになりました。</p>
+          <p>「firstbit」という社名には、情報の最小単位である「bit」と、物事の始まりを意味する「first」という言葉を重ね、常に最新の情報をどこよりも早くお客様へ届けたいという想いを込めています。私たちは、経営・金融・事業承継・福利厚生・観光など、さまざまな領域において価値ある情報と実践的な解決策を提供し、お客様の明るく豊かな将来に貢献してまいります。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 理念・ビジョン -->
+    <section id="philosophy" class="bg-slate-50 py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="fade-in mb-10 max-w-3xl">
+          <p class="mb-2 text-xs font-medium tracking-[0.3em] text-slate-400">PHILOSOPHY &amp; VISION</p>
+          <h2 class="text-2xl font-medium tracking-tight text-navy-900 md:text-3xl">理念・ビジョン</h2>
+        </div>
+
+        <div class="fade-in mb-10 max-w-4xl border-b border-slate-200 pb-10">
+          <p class="mb-1 text-xs font-medium tracking-[0.2em] text-slate-400">Philosophy</p>
+          <h3 class="mb-1 text-lg font-medium tracking-tight text-navy-900">理念</h3>
+          <p class="mb-4 text-base font-medium leading-snug text-navy-900 md:text-lg">
+            本質的な価値を見極め、最新の情報で未来につながる豊かさを創造する。
+          </p>
+          <div class="prose-body space-y-3">
+            <p>社名である「First bit」は、情報の最小単位であり、データにおける「最初の一文字」を意味しています。代表自身が高校から大学院まで一貫して「情報」を探求し、教員免許も有する背景から、現代社会における「情報の大切さ」を誰よりも深く認識しています。「常に最新の情報を、どこよりも早くお届けし、お客様の明るく豊かな将来に貢献したい」——これが、私たちの原点です。</p>
+            <p>株式会社First bitは、この想いを胸に、企業経営、資産形成、事業承継、福利厚生、観光事業などを通じて、お客様一人ひとりの人生と事業に寄り添い、長期的な価値の創出を支援します。</p>
+            <p>私たちが大切にしているのは、単なるサービスの提供ではなく、最新の知見をもとにお客様の未来にとって本当に必要な選択肢を見極め、安心と豊かさにつながる仕組みをつくることです。</p>
+            <p>経営者、企業、地域、そしてそこで働く人々にとって、より良い未来を切り拓くための「最初の一手（First bit）」となる存在を目指します。</p>
+          </div>
+        </div>
+
+        <div class="fade-in mb-10 max-w-4xl border-b border-slate-200 pb-10">
+          <p class="mb-1 text-xs font-medium tracking-[0.2em] text-slate-400">Vision</p>
+          <h3 class="mb-1 text-lg font-medium tracking-tight text-navy-900">ビジョン</h3>
+          <p class="mb-4 text-base font-medium leading-snug text-navy-900 md:text-lg">
+            最新の情報・確かな知見・上質なサービスで、企業価値と人生の豊かさを高める。
+          </p>
+          <div class="prose-body space-y-3">
+            <p>株式会社firstbitは、財務コンサルティング、M&amp;A・事業承継、金融・投資教育、福利厚生サービス、観光事業を通じて、企業と個人の持続的な成長を支援します。</p>
+            <p>会員制の福利厚生サービスでは、安心して働き続けられる環境づくりをサポートし、宿泊・観光事業では、地域資源を活かした特別な体験価値を提供します。</p>
+            <p>私たちは、情報・金融・経営・教育・ウェルビーイング・観光の領域を掛け合わせることで、従来の枠にとらわれない新しい価値を創出し、企業価値の向上と地域価値の発展に貢献してまいります。</p>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <h3 class="mb-6 text-lg font-medium tracking-tight text-navy-900">大切にしている価値観</h3>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="rounded-sm border border-slate-200 bg-white p-5 transition hover:border-slate-300">
+              <h4 class="mb-2 text-sm font-medium text-navy-900">信頼</h4>
+              <p class="prose-body text-[0.8125rem]">お客様の立場に立ち、長期的な視点で誠実な提案を行います。</p>
+            </article>
+            <article class="rounded-sm border border-slate-200 bg-white p-5 transition hover:border-slate-300">
+              <h4 class="mb-2 text-sm font-medium text-navy-900">情報</h4>
+              <p class="prose-body text-[0.8125rem]">常に新しい情報を学び、正しく見極め、お客様にとって価値ある形で提供します。</p>
+            </article>
+            <article class="rounded-sm border border-slate-200 bg-white p-5 transition hover:border-slate-300">
+              <h4 class="mb-2 text-sm font-medium text-navy-900">本質</h4>
+              <p class="prose-body text-[0.8125rem]">目先の利益だけではなく、本当に価値のある選択肢を見極めます。</p>
+            </article>
+            <article class="rounded-sm border border-slate-200 bg-white p-5 transition hover:border-slate-300">
+              <h4 class="mb-2 text-sm font-medium text-navy-900">上質</h4>
+              <p class="prose-body text-[0.8125rem]">一人ひとりに寄り添い、細部まで配慮した質の高いサービスを追求します。</p>
+            </article>
+            <article class="rounded-sm border border-slate-200 bg-white p-5 transition hover:border-slate-300">
+              <h4 class="mb-2 text-sm font-medium text-navy-900">継承</h4>
+              <p class="prose-body text-[0.8125rem]">事業、資産、想い、地域資源を次世代へつなぐ支援を行います。</p>
+            </article>
+            <article class="rounded-sm border border-slate-200 bg-white p-5 transition hover:border-slate-300">
+              <h4 class="mb-2 text-sm font-medium text-navy-900">創造</h4>
+              <p class="prose-body text-[0.8125rem]">金融・経営・福利厚生・観光を組み合わせ、新しい価値を生み出します。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="bg-navy-950 py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="fade-in mb-10 max-w-4xl">
+          <p class="mb-2 text-xs font-medium tracking-[0.3em] text-slate-500">SERVICES</p>
+          <h2 class="text-2xl font-medium tracking-tight text-white md:text-3xl">事業内容</h2>
+          <p class="mt-1 text-xs font-light tracking-[0.15em] text-slate-500">Our Business</p>
+          <p class="mt-4 text-sm font-light leading-relaxed text-slate-400">
+            株式会社Firstbitは、企業の成長と資産価値の向上を支援するため、財務・承継・教育・福利厚生・観光の各領域において実践的なソリューションを提供しています。経営課題の整理から具体的な施策の実行まで、専門的な知見をもとに、お客様に寄り添った支援を行います。
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <article class="fade-in service-card group rounded-sm p-6 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-sm bg-navy-900 text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="mb-3 text-base font-medium text-navy-900">コンサルティング事業</h3>
+            <p class="prose-body">経費削減や社会保険料の適正化、補助金申請サポートなどを通じて、企業の財務改善を支援します。また、生命保険・損害保険の見直しなど、企業や経営者を取り巻くリスク対策にも対応しています。企業価値の最大化に向けて、現状に合わせた最適なソリューションを提供します。</p>
+          </article>
+
+          <article class="fade-in fade-in-delay-1 service-card group rounded-sm p-6 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-sm bg-navy-900 text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </div>
+            <h3 class="mb-3 text-base font-medium text-navy-900">M&amp;Aおよび事業承継</h3>
+            <p class="prose-body">M&amp;Aの仲介をはじめ、事業承継対策や相続対策に関する支援を行います。後継者問題、株式承継、資産の引き継ぎなど、経営者が抱える将来の課題に対し、円滑な承継と企業価値の維持・向上を目指したサポートを提供します。</p>
+          </article>
+
+          <article class="fade-in fade-in-delay-2 service-card group rounded-sm p-6 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-sm bg-navy-900 text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <h3 class="mb-3 text-base font-medium text-navy-900">金融・投資教育</h3>
+            <p class="prose-body">大学や学校における金融教育をはじめ、企業向けの金融リテラシー向上支援を行います。企業型確定拠出年金の導入支援から、従業員向けの投資教育・資産形成研修まで、将来に備えるための実践的な学びを提供します。</p>
+          </article>
+
+          <article class="fade-in fade-in-delay-3 service-card group rounded-sm p-6 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-sm bg-navy-900 text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <h3 class="mb-3 text-base font-medium text-navy-900">福利厚生事業</h3>
+            <p class="prose-body">企業の従業員満足度向上や健康経営の推進を支援するため、会員制の福利厚生サービスを展開しています。自社で展開する会員制クリニックや、各種提携施設との連携を通じて、会員の皆様が安心して日々を過ごせる環境づくりをサポートします。企業ごとの課題やニーズに合わせて、福利厚生制度の充実、従業員エンゲージメントの向上、組織価値の向上に貢献します。</p>
+          </article>
+
+          <article class="fade-in fade-in-delay-4 service-card group rounded-sm p-6 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-sm bg-navy-900 text-white">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+            </div>
+            <h3 class="mb-3 text-base font-medium text-navy-900">観光事業</h3>
+            <p class="prose-body">島根県にある、1日1組限定のプライベート貸別荘「宙辺 -SORABE-」の運営・プロデュースを行っています。地域資源を活かした宿泊体験の提供に加え、指定管理物件の管理や観光地のプロデュースを通じて、地域の魅力向上と観光価値の創出に取り組んでいます。</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="https://sorabe.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-sm border border-slate-200 px-4 py-2 text-xs font-medium tracking-wide text-navy-900 transition hover:border-navy-900 hover:bg-slate-50">
+                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+                宙辺 -SORABE- 公式サイト
+              </a>
+              <a href="https://www.instagram.com/sorabe_shimane/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-sm border border-slate-200 px-4 py-2 text-xs font-medium tracking-wide text-navy-900 transition hover:border-navy-900 hover:bg-slate-50">
+                <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7.624 2.564A6.38 6.38 0 005.5 2.975 4.474 4.474 0 002.948 5.537a6.427 6.427 0 00-.4 2.124C2.5 8.592 2.5 8.892 2.5 11.267s.015 2.673.06 3.606a6.394 6.394 0 00.411 2.122 4.471 4.471 0 002.563 2.553 6.421 6.421 0 002.124.4c.931.041 1.231.05 3.605.046s2.674-.015 3.607-.059a6.4 6.4 0 002.121-.411 4.47 4.47 0 002.553-2.563 6.4 6.4 0 00.4-2.123c.041-.934.05-1.232.046-3.607s-.015-2.673-.059-3.606a6.389 6.389 0 00-.411-2.122 4.294 4.294 0 00-1.012-1.547 4.269 4.269 0 00-1.551-1.006 6.4 6.4 0 00-2.124-.4C13.9 2.51 13.605 2.5 11.23 2.5s-2.673.015-3.606.06m.1 15.813a4.854 4.854 0 01-1.625-.3 2.724 2.724 0 01-1.007-.652 2.694 2.694 0 01-.656-1 4.844 4.844 0 01-.3-1.624c-.043-.922-.052-1.2-.058-3.534s0-2.612.044-3.534a4.841 4.841 0 01.3-1.624A2.9 2.9 0 016.075 4.444a4.844 4.844 0 011.623-.3c.922-.044 1.2-.052 3.534-.058s2.612 0 3.535.044a4.837 4.837 0 011.624.3 2.9 2.9 0 011.664 1.657 4.819 4.819 0 01.3 1.623c.044.922.054 1.2.058 3.534s0 2.612-.044 3.534a4.86 4.86 0 01-.3 1.625 2.9 2.9 0 01-1.657 1.663 4.845 4.845 0 01-1.623.3c-.922.043-1.2.052-3.535.058s-2.611 0-3.534-.044m7.131-11.8A1.05 1.05 0 1115.9 5.524a1.05 1.05 0 01-1.048 1.051m-8.1 4.684a4.491 4.491 0 104.483-4.5 4.491 4.491 0 00-4.483 4.5m1.576 0a2.916 2.916 0 112.922 2.91 2.916 2.916 0 01-2.922-2.91"/>
+                </svg>
+                Instagram
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 代表者挨拶 -->
+    <section id="message" class="bg-slate-50 py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="fade-in mb-8 max-w-3xl">
+          <p class="mb-2 text-xs font-medium tracking-[0.3em] text-slate-400">MESSAGE</p>
+          <h2 class="text-2xl font-medium tracking-tight text-navy-900 md:text-3xl">代表者挨拶</h2>
+        </div>
+
+        <div class="fade-in max-w-4xl">
+          <div class="prose-body space-y-3">
+            <p>大手証券会社での約11年間にわたる勤務を経て、証券や保険といった金融投資分野にとどまらず、経営支援、事業承継、組織再編など幅広い領域で企業や地域の成長支援に携わってまいりました。MBA（経営修士）およびMOT（技術経営修士）の双方の学位を取得しており、多角的な視点から経営課題に向き合っています。株式会社Firstbit設立後は、これまでの知見を最大限に活かし、経費削減や社会保険料の適正化、補助金申請サポートをはじめ、M&amp;A・事業承継対策、相続対策など、企業経営に関わる多様な課題に対して、現場の実務に基づいた具体的な解決策をご提案しております。また、これからの時代に不可欠な金融教育の普及にも力を入れており、広島大学にて客員講師として教鞭をとるなど、次世代の育成にも取り組んでおります。</p>
+            <p>近年は、コンサルティング事業に加え、地域資源を活かした観光事業にも注力しています。幼少期から宇宙が好きで父と通った思い出の地、「日原天文台」と「ペンション北斗星」を、1日1組限定の「プライベートコテージ 宙辺 -SORABE-」としてリブランドし、その運営・プロデュースを手掛けております。「より多くの方に宇宙に親しんでいただきたい」という思いのもと、美しい星空とともに過ごす豊かな時間を提供しています。企業価値の向上と地域価値の創出を両軸に据え、お客様と地域社会の持続可能な成長を全力で支援してまいります。</p>
+          </div>
+          <p class="mt-8 text-right text-sm font-medium text-navy-900">
+            代表取締役<span class="ml-4 text-base">新田 信雄</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 会社概要 -->
+    <section id="company" class="bg-white py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="fade-in mb-10">
+          <p class="mb-2 text-xs font-medium tracking-[0.3em] text-slate-400">COMPANY</p>
+          <h2 class="text-2xl font-medium tracking-tight text-navy-900 md:text-3xl">会社概要</h2>
+        </div>
+
+        <div class="fade-in overflow-hidden rounded-sm border border-slate-200 bg-white">
+            <table class="w-full text-sm">
+              <tbody>
+                <tr class="border-b border-slate-100">
+                  <th class="w-36 shrink-0 bg-slate-50 px-5 py-3.5 text-left text-xs font-medium tracking-wide text-slate-500 md:w-40">会社名</th>
+                  <td class="px-5 py-3.5 font-light text-slate-700">株式会社Firstbit</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <th class="bg-slate-50 px-5 py-3.5 text-left text-xs font-medium tracking-wide text-slate-500">代表取締役</th>
+                  <td class="px-5 py-3.5 font-light text-slate-700">新田 信雄</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <th class="bg-slate-50 px-5 py-3.5 text-left text-xs font-medium tracking-wide text-slate-500 align-top">所在地</th>
+                  <td class="px-5 py-3.5 font-light text-slate-700">
+                    <div class="space-y-3 leading-normal">
+                      <div>
+                        <p class="text-xs font-medium text-navy-900">本社</p>
+                        <p class="text-sm text-slate-700">〒732-0822<br>広島県広島市南区松原町3-2</p>
+                      </div>
+                      <div>
+                        <p class="text-xs font-medium text-navy-900">広島オフィス</p>
+                        <p class="text-sm text-slate-700">〒730-0012<br>広島県広島市上八丁堀8-8 第一ウエノヤビル 6F</p>
+                      </div>
+                      <div>
+                        <p class="text-xs font-medium text-navy-900">島根オフィス</p>
+                        <p class="text-sm text-slate-700">〒699-5207<br>島根県鹿足郡津和野町枕瀬801-8</p>
+                      </div>
+                      <div>
+                        <p class="text-xs font-medium text-navy-900">東京オフィス</p>
+                        <p class="text-sm text-slate-700">〒150-0002<br>東京都渋谷区渋谷2-11-1 ストラテジックタワービル 4F</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <th class="bg-slate-50 px-5 py-3.5 text-left text-xs font-medium tracking-wide text-slate-500 align-top">事業内容</th>
+                  <td class="px-5 py-3.5 font-light leading-normal text-slate-700">
+                    M&amp;A・事業承継、経営・財務コンサルティング、金融・投資教育、福利厚生、観光・宿泊施設の運営・プロデュース
+                  </td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <th class="bg-slate-50 px-5 py-3.5 text-left text-xs font-medium tracking-wide text-slate-500">連絡先</th>
+                  <td class="px-5 py-3.5 font-light text-slate-700">
+                    <a href="mailto:info@hiroshima-ifa.com" class="text-navy-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-navy-900">info@hiroshima-ifa.com</a>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="bg-slate-50 px-5 py-3.5 text-left text-xs font-medium tracking-wide text-slate-500 align-top">セキュリティへの取り組み</th>
+                  <td class="px-5 py-3.5">
+                    <span class="inline-flex items-center gap-2 rounded-sm border border-navy-900/10 bg-navy-900/5 px-3 py-2 text-xs font-medium text-navy-900">
+                      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                      </svg>
+                      「SECURITY ACTION」二つ星宣言企業
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="fade-in mt-8">
+          <p class="mb-4 text-xs font-medium tracking-[0.2em] text-slate-400">OFFICE LOCATIONS</p>
+          <div class="grid gap-5 lg:grid-cols-3">
+            <article class="rounded-sm border border-slate-200 bg-white p-5 lg:col-span-3">
+              <p class="mb-1 text-xs font-medium text-navy-900">本社</p>
+              <p class="text-xs leading-normal text-slate-600">〒732-0822<br>広島県広島市南区松原町3-2</p>
+            </article>
+
+            <article class="overflow-hidden rounded-sm border border-slate-200 bg-white">
+              <div class="p-5">
+                <p class="mb-1 text-xs font-medium text-navy-900">広島オフィス</p>
+                <p class="text-xs leading-normal text-slate-600">〒730-0012<br>広島県広島市上八丁堀8-8 第一ウエノヤビル 6F</p>
+              </div>
+              <iframe
+                title="広島オフィス所在地マップ"
+                src="https://maps.google.com/maps?q=%E5%BA%83%E5%B3%B6%E7%9C%8C%E5%BA%83%E5%B3%B6%E5%B8%82%E4%B8%8A%E5%85%AB%E4%B8%81%E5%A0%808-8+%E7%AC%AC%E4%B8%80%E3%82%A6%E3%82%A8%E3%83%8E%E3%83%A4%E3%83%93%E3%83%AB&amp;z=16&amp;output=embed"
+                class="h-48 w-full border-0 border-t border-slate-100"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </article>
+
+            <article class="overflow-hidden rounded-sm border border-slate-200 bg-white">
+              <div class="p-5">
+                <p class="mb-1 text-xs font-medium text-navy-900">島根オフィス</p>
+                <p class="text-xs leading-normal text-slate-600">〒699-5207<br>島根県鹿足郡津和野町枕瀬801-8</p>
+              </div>
+              <iframe
+                title="島根オフィス所在地マップ"
+                src="https://maps.google.com/maps?q=%E5%B3%B6%E6%A0%B9%E7%9C%8C%E9%B9%BF%E8%B6%B3%E9%83%A1%E6%B4%A5%E5%92%8C%E9%87%8E%E7%94%BA%E6%9E%95%E7%80%AC801-8&amp;z=16&amp;output=embed"
+                class="h-48 w-full border-0 border-t border-slate-100"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </article>
+
+            <article class="overflow-hidden rounded-sm border border-slate-200 bg-white">
+              <div class="p-5">
+                <p class="mb-1 text-xs font-medium text-navy-900">東京オフィス</p>
+                <p class="text-xs leading-normal text-slate-600">〒150-0002<br>東京都渋谷区渋谷2-11-1 ストラテジックタワービル 4F</p>
+              </div>
+              <iframe
+                title="東京オフィス所在地マップ"
+                src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E6%B8%8B%E8%B0%B72-11-1+%E3%82%B9%E3%83%88%E3%83%A9%E3%83%86%E3%82%B8%E3%83%83%E3%82%AF%E3%82%BF%E3%83%AF%E3%83%BC%E3%83%93%E3%83%AB&amp;z=16&amp;output=embed"
+                class="h-48 w-full border-0 border-t border-slate-100"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="bg-navy-950 py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="fade-in mx-auto max-w-2xl text-center">
+          <p class="mb-2 text-xs font-medium tracking-[0.3em] text-slate-500">CONTACT</p>
+          <h2 class="text-2xl font-medium tracking-tight text-white md:text-3xl">お問い合わせ</h2>
+          <p class="mt-4 text-sm font-light leading-relaxed text-slate-400">
+            ご相談・ご質問など、お気軽にお問い合わせください。内容を確認のうえ、担当よりご連絡いたします。
+          </p>
+          <div class="mt-8">
+            <a
+              href="mailto:info@hiroshima-ifa.com"
+              class="inline-flex items-center gap-3 rounded-sm border border-white/20 bg-white/5 px-8 py-4 text-sm font-medium tracking-wide text-white transition hover:border-white/40 hover:bg-white/10"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              info@hiroshima-ifa.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 py-10">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div>
+          <p class="text-base font-semibold tracking-[0.12em] text-white">Firstbit</p>
+          <p class="mt-0.5 text-[10px] tracking-widest text-slate-500">株式会社Firstbit</p>
+          <p class="mt-3">
+            <a href="mailto:info@hiroshima-ifa.com" class="text-xs text-slate-400 transition hover:text-white">info@hiroshima-ifa.com</a>
+          </p>
+          <p class="mt-3 space-y-1.5 text-[11px] leading-normal text-slate-500">
+            <span class="block"><span class="text-slate-400">本社</span> 〒732-0822<br>広島県広島市南区松原町3-2</span>
+            <span class="block"><span class="text-slate-400">広島</span> 〒730-0012<br>広島県広島市上八丁堀8-8 第一ウエノヤビル 6F</span>
+            <span class="block"><span class="text-slate-400">島根</span> 〒699-5207<br>島根県鹿足郡津和野町枕瀬801-8</span>
+            <span class="block"><span class="text-slate-400">東京</span> 〒150-0002<br>東京都渋谷区渋谷2-11-1 ストラテジックタワービル 4F</span>
+          </p>
+        </div>
+        <nav class="flex flex-wrap gap-x-8 gap-y-3" aria-label="フッターナビゲーション">
+          <a href="#origin" class="text-xs tracking-[0.15em] text-slate-400 transition hover:text-white">ABOUT</a>
+          <a href="#philosophy" class="text-xs tracking-[0.15em] text-slate-400 transition hover:text-white">PHILOSOPHY</a>
+          <a href="#services" class="text-xs tracking-[0.15em] text-slate-400 transition hover:text-white">SERVICES</a>
+          <a href="#message" class="text-xs tracking-[0.15em] text-slate-400 transition hover:text-white">MESSAGE</a>
+          <a href="#company" class="text-xs tracking-[0.15em] text-slate-400 transition hover:text-white">COMPANY</a>
+          <a href="#contact" class="text-xs tracking-[0.15em] text-slate-400 transition hover:text-white">CONTACT</a>
+        </nav>
+      </div>
+      <div class="mt-8 border-t border-white/10 pt-6">
+        <p class="text-[11px] font-light tracking-wider text-slate-600">&copy; 2026 Firstbit Co., Ltd. ALL RIGHTS RESERVED.</p>
+        <p class="mt-3">
+          <a href="リスキリング宣言.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] tracking-wide text-slate-400 underline decoration-white/20 underline-offset-4 transition hover:text-white hover:decoration-white/50">リスキリング宣言（PDF）</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.getElementById('header');
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function updateHeader() {
+        if (window.scrollY > 40) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('hidden') === false;
+        menuToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      fadeElements.forEach((el) => observer.observe(el));
+
+      fadeElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          el.classList.add('is-visible');
+          observer.unobserve(el);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
